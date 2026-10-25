@@ -1,0 +1,90 @@
+﻿.header {
+  background: #fff;
+  border-bottom: 1px solid #edf1f4;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 80px;
+  margin: 0 auto;
+  padding: 16px 32px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.logoMark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  color: #259ed1;
+  background: #edf8fd;
+}
+
+.brandName {
+  color: #213747;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #526571;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.nav a:hover {
+  color: #1885b3;
+  background: #f0f9fd;
+}
+
+.logo:focus-visible,
+.nav a:focus-visible {
+  outline: 2px solid #259ed1;
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .inner {
+    min-height: 72px;
+    gap: 16px;
+    padding: 14px 20px;
+  }
+
+  .brandName {
+    font-size: 22px;
+  }
+
+  .nav a {
+    padding-inline: 8px;
+    font-size: 14px;
+  }
+}
+
+.nav { display: flex; gap: 12px; }
+.nav a.active { color: #1684b3; background: #edf8fd; }
+@media (max-width: 600px) {
+  .nav { gap: 2px; }
+  .logo { gap: 6px; }
+  .logoMark { width: 36px; height: 36px; border-radius: 12px; }
+}
