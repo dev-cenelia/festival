@@ -1,24 +1,4 @@
-﻿import { Heart, MapPin, Search } from "lucide-react";
-
-// 스타일 확인용 정적 카드입니다. 데이터와 이동 기능은 직접 연결하세요.
-export function FestivalCard() {
-  return (
-    <article className="festival-card">
-      <div className="card-image">
-        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=600&q=85" alt="분홍빛 꽃밭" loading="lazy" />
-        <span className="badge">자연생태</span>
-      </div>
-      <div className="card-body">
-        <div className="card-title">
-          <h3>축제 이름</h3>
-          <button type="button" className="icon-button" aria-label="관심 축제 등록"><Heart size={18} /></button>
-        </div>
-        <p>2026.10.01 – 2026.11.15</p>
-        <span className="card-location"><MapPin size={13} />축제 지역 · 장소</span>
-      </div>
-    </article>
-  );
-}
+﻿import { Search } from "lucide-react";
 
 // 제출과 검색 처리가 없는 검색창 마크업입니다.
 export function SearchBar() {
@@ -38,3 +18,4 @@ export function SearchBar() {
     </div>
   );
 }
+
