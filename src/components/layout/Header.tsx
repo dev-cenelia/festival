@@ -12,7 +12,7 @@ export default function Header() {
         </Link>
         <nav className={styles.nav} aria-label="주요 메뉴">
           <Link to="/">메인</Link>
-          <Link to="/festivals">축제 탐색</Link>
+          <Link to="/festivals/list">축제 탐색</Link>
         </nav>
       </div>
     </header>

@@ -1,19 +1,21 @@
 ﻿import { ArrowRight, Wind } from "lucide-react";
 import { FestivalCard } from "../components/FestivalCard";
 import { SearchBar } from "../components/SearchBar";
-import { useEffect, useState } from "react";
-import type { FestivalData } from "../types/festival";
-import { getFestivals } from "../api/festivalApi";
+import { useEffect } from "react";
+import { useFestivalStore } from "../stores/useFestivalStore";
+import { FestivalDataStatus } from "../components/FestivalDataStatus";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
-  const [festival, setFestivalList] = useState<FestivalData[]>([]);
+  const festival = useFestivalStore((state) => state.festivals);
+  const loadFestivals = useFestivalStore((state) => state.loadFestivals);
+  const loadCategories = useFestivalStore((state) => state.loadCategories);
   useEffect(() => {
-    getFestivals()
-      .then((data) => {
-        setFestivalList(data.response.body.items.item ?? []);
-      })
-      .catch(console.error);
-  }, []);
+    void loadFestivals();
+    void loadCategories();
+  }, [loadFestivals, loadCategories]);
+
+  const navigate = useNavigate();
   return (
     <>
       <section className="home-hero">
@@ -35,6 +37,7 @@ export default function HomePage() {
         </div>
       </section>
       <div className="container home-sections">
+        <FestivalDataStatus />
         <section>
           <div className="section-heading">
             <div>
@@ -42,11 +45,10 @@ export default function HomePage() {
               <h2>지금 눈여겨볼 축제</h2>
               <p>이번 나들이를 특별하게 만들어줄 축제를 소개합니다.</p>
             </div>
-            <button type="button" className="text-button">
+            <button type="button" className="text-button" onClick={() => navigate("/festivals/list")}>
               전체 보기 <ArrowRight size={17} />
             </button>
           </div>
-          {/* 반복 출력과 실제 데이터는 직접 연결하세요. */}
           <div className="festival-grid home-grid">
             {festival.slice(0, 4).map((item) => (
               <FestivalCard key={item.contentid} festival={item} />
@@ -76,7 +78,7 @@ export default function HomePage() {
             </h2>
             <p>일상의 쉼표가 되는 특별한 여행, 콧바람</p>
           </div>
-          <button type="button" className="banner-arrow" aria-label="축제 탐색">
+          <button type="button" className="banner-arrow" aria-label="축제 탐색" onClick={() => navigate("/festivals/list")}>
             <ArrowRight />
           </button>
         </div>
